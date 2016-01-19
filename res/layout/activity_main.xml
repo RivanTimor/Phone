@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+         >
+    </FrameLayout>
+    <View android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#999999"/>
+
+    <RadioGroup
+        android:id="@+id/mian_bottom_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/main_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/main_home_select"
+            android:gravity="center"
+            android:button="@null"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="首页" />
+        <RadioButton
+            android:id="@+id/main_search"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:drawableTop="@drawable/main_serch_select"
+            android:gravity="center"
+            android:text="发现" />
+        <RadioButton
+            android:id="@+id/main_my"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:drawableTop="@drawable/main_my_select"
+            android:gravity="center"
+            android:text="我的" />
+    </RadioGroup>
+
+</LinearLayout>
