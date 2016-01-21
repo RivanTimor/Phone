@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/et_gxqm"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/by_rounded_edittext"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="发表自己的心情吧！"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        tools:ignore="RtlSymmetry" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#49B545"
+        android:text="保存"
+        android:textColor="@color/white"
+       />
+
+</LinearLayout>
