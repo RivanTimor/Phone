@@ -27,10 +27,14 @@ import cn.bmob.v3.listener.RequestSMSCodeListener;
 import com.iyy.dingping.BaseActivity;
 import com.iyy.dingping.MainActivity;
 import com.iyy.dingping.R;
+import com.iyy.dingping.bll.BLLUsrCache;
 import com.iyy.dingping.entity.MyUser;
 import com.iyy.dingping.entity.User;
 import com.iyy.dingping.entity.UsrPhone;
+import com.iyy.dingping.ui.personal.GeXingQmActivity;
 import com.iyy.dingping.utils.BaseUtil;
+import com.iyy.dingping.utils.constant.BaseConstant;
+import com.iyy.dingping.utils.constant.ConfigConstant;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -64,6 +68,7 @@ public class LoginActivity extends BaseActivity{
 	private String code;
 	int timeNum = 60;
 	private long exitTime = 0;
+	private BLLUsrCache bllUsrCache = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -80,6 +85,8 @@ public class LoginActivity extends BaseActivity{
 		LayoutParams l_menulp = (LayoutParams) ly_login_pic.getLayoutParams();
 		l_menulp.height = (int) ((sysConfig.getScreenWidth()/480f) * 173f);
 		ly_login_pic.setLayoutParams(l_menulp);
+		
+		bllUsrCache = new BLLUsrCache(mContext);
 
 		bt_next.setOnClickListener(new OnClickListener() {
 
@@ -120,6 +127,7 @@ public class LoginActivity extends BaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				sendSmsNew(phoneNum);
+				setTextSend();
 			}
 		});
 	}
@@ -144,8 +152,6 @@ public class LoginActivity extends BaseActivity{
 	
 	public void sendSmsNew(String phone){
 		BmobSMS.requestSMSCode(mContext, phone,"Address", new RequestSMSCodeListener() {
-
-
 			@Override
 			public void done(Integer arg0, BmobException arg1) {
 				// TODO Auto-generated method stub
@@ -259,8 +265,8 @@ public class LoginActivity extends BaseActivity{
 				progress.dismiss();
 				if(ex==null){
 					Toast.makeText(mContext, "µÇÂ¼³É¹¦", Toast.LENGTH_LONG).show();
-					Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-					intent.putExtra("from", "loginonekey");
+					Intent intent = new Intent(LoginActivity.this,GeXingQmActivity.class);
+					bllUsrCache.editUsrCache(userSysID, BaseConstant.USER_PHONE,phoneNum);
 					startActivity(intent);
 					finish();
 				}else{

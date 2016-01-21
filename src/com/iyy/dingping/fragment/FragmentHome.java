@@ -24,14 +24,11 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class FragmentHome extends Fragment{
 	
-	@ViewInject(R.id.tv_city)
-	private TextView tv_city;
 	@ViewInject(R.id.lv_phone_num)
 	private ListView lv_phone_num;
-	private LocationClient locationClient = null;
+	
 	private String CityName;
 	private Context mContext;
-	private LocationUtils locationUtils;
 	private SysConfig sysConfig;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +38,6 @@ public class FragmentHome extends Fragment{
 		ViewUtils.inject(this, view);
 		mContext = this.getActivity();
 		sysConfig = SysConfig.getConfig(mContext);
-		initGps();
 		initList();
 		return view;
 	}
@@ -62,6 +58,7 @@ public class FragmentHome extends Fragment{
 		public boolean handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			if(msg.what == 1){
+				
 			}
 			return false;
 		}
@@ -73,17 +70,10 @@ public class FragmentHome extends Fragment{
 		super.onStart();
 	}
 	
-	//初始化定位
-	private void initGps() {
-		locationUtils =  new LocationUtils(mContext);
-		locationUtils.Location();
-		tv_city.setText(sysConfig.getCustomConfig(ConfigConstant.LOCATION,""));
-	}
 
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		locationUtils.destroy();
 	}
 }

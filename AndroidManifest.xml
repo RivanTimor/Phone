@@ -40,7 +40,7 @@
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
             android:name=".WelcomeStartActivity"
-            android:label="@string/app_name" >
+            android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,6 +63,31 @@
             android:name=".login.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        
+        <!-- 个人信息界面 -->
+        <activity
+            android:name=".ui.personal.GeXingQmActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        
+        <!-- 城市选择界面 -->
+        <activity
+            android:name=".ui.personal.ActivitySelectCity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        
+         <!-- 修改姓名界面 -->
+        <activity
+            android:name=".ui.personal.ChangeNameActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+       
+         <!-- 修改姓名界面 -->
+        <activity
+            android:name=".ui.personal.GeXingQianMing"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        
         <!-- 百度地图地位服务 -->
         <service
             android:name="com.baidu.location.f"

@@ -7,6 +7,14 @@
     <string name="head_return">返回</string>
     <string name="head_title">Forever111</string>
     <string name="head_submit">确定</string>
+    <string name="save">保存</string>
+    <string name="change_name">确认姓名</string>
+    <string name="check_name">校验</string>
+    <string name="gexing_qianming">个性签名</string>
+    
+    
+    
+     <string name="info_set">个人设置</string>
 
     <string-array name="jazzy_effects">
         <item>Standard</item>

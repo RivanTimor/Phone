@@ -34,5 +34,18 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+    
+    <style name="TextTitleSmallBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/small</item>
+        <item name="android:textColor">@color/black_normal</item>
+    </style>
+    
+     <style name="AppTheme2" parent="android:Theme.Light.NoTitleBar.Fullscreen">  
+    <item name="android:windowIsTranslucent">true</item>  
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@drawable/guide_welcome</item>  
+</style>
 
 </resources>

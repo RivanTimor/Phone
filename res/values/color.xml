@@ -11,7 +11,11 @@
     <!-- 字体黑色 -->
 
     <color name="holo_blue">#FF33E5B5</color>
+    <color name="black_normal">#333333</color>
+    <!-- 字体黑色 -->
     <color name="bg_white">#fefcfc</color>
+    <color name="line_gray">#CACBC9</color>
+    <!-- 淡灰色 -->
     <!-- 背景白色 -->
     <color name="bbutton_danger">#ffd9534f</color>
     <color name="bbutton_danger_edge">#ffd43f3a</color>

@@ -62,7 +62,6 @@ public class LocationUtils {
 			}
 			if (sb.toString() != null && sb.toString().length() > 0) {
 				sysConfig.setCustomConfig(ConfigConstant.LOCATION, sb.toString());
-				LogUtils.e(location.getAddrStr());
 			}else{
 			}
 		}

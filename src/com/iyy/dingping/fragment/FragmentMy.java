@@ -9,6 +9,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,14 +39,14 @@ import android.widget.Toast;
 import com.iyy.dingping.R;
 import com.iyy.dingping.bll.BLLTopPic;
 import com.iyy.dingping.entity.TopPic;
+import com.iyy.dingping.ui.personal.GeXingQmActivity;
 import com.iyy.dingping.utils.BaseUtil;
 import com.iyy.dingping.utils.CustomDialog;
 import com.iyy.dingping.utils.DateUtil;
 import com.iyy.dingping.utils.JazzyViewPager;
 import com.iyy.dingping.utils.JazzyViewPager.TransitionEffect;
 import com.iyy.dingping.utils.OutlineContainer;
-import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.iyy.dingping.utils.constant.ConfigConstant;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class FragmentMy extends Fragment {
@@ -59,6 +60,8 @@ public class FragmentMy extends Fragment {
 	private JazzyViewPager mViewPaper;
 	//Ô²ÐÎ±êÇ©µÄ¸¸²ã
 
+	private RelativeLayout ry_photo;
+	
 	private ListView lv_information;
 	private LinearLayout symbolContainer;
 	private ImageView[] images;
@@ -68,9 +71,6 @@ public class FragmentMy extends Fragment {
 	private ImageLoader mImageLoader;
 	private Handler mHandler;
 	private Context mContext;
-	private CustomDialog dialog;
-	private File temp;
-	private File file = new File(Environment.getExternalStorageDirectory(),DateUtil.getFormatDate("yyyy-MM-dd HH:mm:ss", new Date())+".jpg");
 	
 	private BLLTopPic bllTopPic = null;
 	@Override
@@ -88,6 +88,15 @@ public class FragmentMy extends Fragment {
 		super.onStart();
 		mImageLoader = ImageLoader.getInstance();
 		bllTopPic = new BLLTopPic(mContext);
+		ry_photo = (RelativeLayout) getView().findViewById(R.id.ry_photo);
+		ry_photo.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(mContext, GeXingQmActivity.class));
+			}
+		});
 		initTopPic();
 	}
 
@@ -152,7 +161,6 @@ public class FragmentMy extends Fragment {
 
 	private void initViews() {
 		symbolContainer = (LinearLayout) getView().findViewById(R.id.symblo_container);
-		temp = new File(Environment.getExternalStorageDirectory()+ "/photo.jpg");
 		circleSymbols = new ImageView[imageUrlList.size()];
 		images = new ImageView[imageUrlList.size()];
 		for (int i = 0; i < imageUrlList.size(); i++) {
@@ -287,8 +295,4 @@ public class FragmentMy extends Fragment {
 			}
 		}
 	}
-
-
-
-
 }

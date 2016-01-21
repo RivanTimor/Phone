@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.iyy.dingping.entity.TopPic;
+import com.iyy.dingping.entity.UsrCache;
 import com.iyy.dingping.entity.UsrPhone;
 import com.iyy.dingping.utils.BYFileUtil;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -49,6 +50,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
 		daoMaps = new HashMap<String, Dao>();
 		daoMaps.put("usrPhone", null);   //List信息表
 		daoMaps.put("topPic", null);   //List信息表
+		daoMaps.put("usrCache", null);
 	}
 
 	@Override
@@ -56,6 +58,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			TableUtils.createTable(connectionSource, UsrPhone.class);
 			TableUtils.createTable(connectionSource, TopPic.class);
+			TableUtils.createTable(connectionSource, UsrCache.class);
 			// 建表成功后，插入初始数据
 			initData(db);
 
@@ -122,4 +125,14 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
 		return accountDao;
 	}
 	
+	public Dao<UsrCache , Integer> getUsrCacheDao() {
+		Dao<UsrCache , Integer> accountDao = daoMaps.get("usrCahce"); 
+		if (accountDao == null) {
+			try {
+				accountDao = getDao(UsrCache .class);
+			} catch (SQLException e) {
+			}
+		}
+		return accountDao;
+	}
 }
