@@ -7,12 +7,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.GetListener;
 
+import com.iyy.dingping.entity.Version;
 import com.iyy.dingping.login.LoginActivity;
 import com.iyy.dingping.utils.BaseUtil;
 import com.iyy.dingping.utils.SharedUtils;
 import com.iyy.dingping.utils.SysConfig;
+import com.iyy.dingping.utils.constant.ConfigConstant;
 
 /**
  * 实现欢迎界面的延迟跳转有两种方法。
@@ -24,6 +28,7 @@ import com.iyy.dingping.utils.SysConfig;
 public class WelcomeStartActivity extends Activity{
 	
 	private SysConfig sysConfig;
+	private static final String VERSIONID = "PR2u777H";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -45,6 +50,27 @@ public class WelcomeStartActivity extends Activity{
 		//还可以使用定时器处理
 		Timer timer = new Timer();
 		timer.schedule(new Task(), 3000);
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		BmobQuery<Version> query = new BmobQuery<Version>();
+		query.getObject(getApplicationContext(), VERSIONID, new GetListener<Version>() {
+			
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onSuccess(Version arg0) {
+				// TODO Auto-generated method stub
+				sysConfig.setCustomConfig(ConfigConstant.VERSIONNUM, arg0.getVersionNum());
+			}
+		});
 	}
 	
 	class Task extends TimerTask{

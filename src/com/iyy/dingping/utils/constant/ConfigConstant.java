@@ -6,4 +6,6 @@ public class ConfigConstant {
 	public static final String LOCATION = "location";
 	
 	public static final String PHONE_NUM = "phoneNum";
+	
+	public static final String VERSIONNUM = "version_num";
 }
